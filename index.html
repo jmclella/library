@@ -17,24 +17,23 @@
             <button class="btn add-book" id="modal-button">+ Add Book</button>
         </div>
 
-        <div class="library">
+        <div class="library" id="bookGrid">
         </div>
     </div>
 
     <div class="modal" id="modal">
         <div class="modal-content">
-            <div class="modal-form">
-                <h3>Add Book</h3>
-                <input type="text" placeholder="Title" id="title">
-                <input type="text" placeholder="Author" id="author">
-                <input type="text" placeholder="Pages" id="pages">
-                <div class="checkbox">
-                    <label for="isRead">Book Complete?</label>
-                    <input type="checkbox" id="isRead">
+            <form class="modal-form" id="form" >
+                <h3 class="form-title">Add Book</h3>
+                <input type="text" placeholder="Title" id="title" name="title">
+                <input type="text" placeholder="Author" id="author" name="author">
+                <input type="text" placeholder="Pages" id="pages" name="pages">
+                <div class="checkbox-container">
+                    <label>Book Complete?</label>
+                    <input type="checkbox" id="isRead" name="isRead">
                 </div>
-                <input type="submit" value="Submit">
-                
-            </div>
+                <button id="submit">Submit</button>
+            </form>
         </div>
     </div>
 
