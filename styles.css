@@ -22,6 +22,9 @@ html {
     --header-text-color: #fafafa;
     --card-text-color: black;
     --standard-font: 24px;
+    --green-color: #9fff9c;
+    --red-color: #ff9c9c;
+    --remove-color: #efefef;
 }
 
 .grid-container {
@@ -33,7 +36,7 @@ html {
         "subheader subheader subheader"
         "body body body";
     grid-template-columns: 1fr 4fr 1fr;
-    grid-template-rows: 100px 100px 1fr;
+    grid-template-rows: 100px 75px 1fr;
 }
 
 .header {
@@ -72,12 +75,80 @@ html {
 
 .library {
     grid-area: body;
+    margin-top: 25px;
     margin-left: 10%;
     margin-right: 10%;
     margin-bottom: 10%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 25px;
+}
+
+.book-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 15px;
+    padding: 5px;
+    padding-bottom: 15px;
+    justify-items: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    border: 2px solid var(--card-outline-color);
+    border-radius: 8px;
+    color: var(--card-text-color);
+    background-color: white;
+    font-size: var(--standard-font);
+}
+
+.book-card:hover {
+    background-color: var(--button-hover);
+    border: 8px solid var(--header-color);
+}
+
+.card-button-container {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    width: 100%;
+}
+
+.card-button-container > button {
+    width: 90%;
+    font-size: var(--standard-font);
+    padding: 5px;
+    border: none;
+    border-radius: 8px;
+}
+
+.read {
+    background-color: var(--green-color);
+}
+
+.read:hover {
+    opacity: .5;
+    cursor: pointer;
+}
+
+.unread {
+    background-color: var(--red-color);
+}
+
+.unread:hover {
+    opacity: .5;
+    cursor: pointer;
+}
+
+.remove-card {
+    background-color: var(--remove-color);
+}
+
+.remove-card:hover {
+    opacity: .5;
+    cursor: pointer;
 }
 
 .modal {
@@ -158,5 +229,7 @@ input[type=checkbox] {
     align-items: center;
     justify-content: center;
 }
+
+
 
 

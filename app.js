@@ -28,7 +28,14 @@ submitButton = document.getElementById('submit');
 bookGrid = document.getElementById('bookGrid');
 
 // Declare library list of books
-let myLibrary = []
+let myLibrary = [
+    {
+        title: 'The Hobbit',
+        author: 'J.R.R Tolkien',
+        pages: 295,
+        isRead: true
+    }
+]
 
 // Create function when submit button is clicked to add Book
 form.addEventListener('submit', (event) => {
@@ -66,26 +73,48 @@ function updateLibrary() {
     for (book of myLibrary) {
         let bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
+
         let titleElem = document.createElement('p');
         let authorElem = document.createElement('p');
         let pagesElem = document.createElement('p');
-        let isReadElem = document.createElement('p');
+
+        let buttonContainer = document.createElement('div');
+        buttonContainer.classList.add('card-button-container');
+
+        let isReadButton = document.createElement('button');
+
+        let removeCardButton = document.createElement('button');
+        removeCardButton.classList.add('remove-card');
 
         titleElem.textContent = book.title;
         authorElem.textContent = book.author;
-        pagesElem.textContent = book.pages;
-        isReadElem.textContent = book.isRead;
+        pagesElem.textContent = `${book.pages} pages`;
+        
+        if (book.isRead) {
+            isReadButton.textContent = 'Read';
+            isReadButton.classList.add('read');
+        } else {
+            isReadButton.textContent = 'Not Read';
+            isReadButton.classList.add('unread');
+        }
+
+        removeCardButton.textContent = 'Remove';
 
         bookCard.appendChild(titleElem);
         bookCard.appendChild(authorElem);
         bookCard.appendChild(pagesElem);
-        bookCard.appendChild(isReadElem);
+        
+        buttonContainer.appendChild(isReadButton);
+        buttonContainer.appendChild(removeCardButton);
+
+        bookCard.appendChild(buttonContainer);
+
         bookGrid.appendChild(bookCard);
     }
 }
 
 
-
+updateLibrary();
 
 
 
