@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="styles.css" >
+</head>
+<body>
+    <div class="grid-container">
+        <div class="header">
+            <h1>Library</h1>
+        </div>
+
+        <div class="subheader">
+            <button class="btn add-book" id="modal-button">+ Add Book</button>
+        </div>
+
+        <div class="library">
+        </div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-form">
+                <h3>Add Book</h3>
+                <input type="text" placeholder="Title" id="title">
+                <input type="text" placeholder="Author" id="author">
+                <input type="text" placeholder="Pages" id="pages">
+                <div class="checkbox">
+                    <label for="isRead">Book Complete?</label>
+                    <input type="checkbox" id="isRead">
+                </div>
+                <input type="submit" value="Submit">
+                
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="app.js"></script>
+</body>
+</html>
