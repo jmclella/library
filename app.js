@@ -83,6 +83,7 @@ function addBookToLibrary (book) {
 function updateLibrary() {
     resetGrid();
 
+    // Add DOM Elements and Text Content into webpage
     for (book of myLibrary) {
         let bookIndex = myLibrary.indexOf(book);
 
@@ -127,6 +128,7 @@ function updateLibrary() {
         bookCard.appendChild(buttonContainer);
         bookGrid.appendChild(bookCard);  
 
+        // Toggle .isRead value of data attribute position
         isReadButton.addEventListener('click', (e) => {
             console.log(e.target);
             let tempVar = parseInt(e.target.dataset.indexBook);
@@ -134,6 +136,7 @@ function updateLibrary() {
             updateLibrary();
         })
 
+        // Splice index of data attribute clicked from library
         removeCardButton.addEventListener('click', (e) => {
             console.log(e.target);
             let tempVar = parseInt(e.target.dataset.indexBook);
@@ -144,12 +147,13 @@ function updateLibrary() {
 }
 
 
+// Reset Grid to avoid duplicate entries
 function resetGrid() {
     bookGrid.innerHTML = '';
 }
 
 
-
+// Call updateLibrary function to show pre-populated entries
 updateLibrary();
 
 
