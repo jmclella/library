@@ -27,21 +27,31 @@ form = document.getElementById('form');
 submitButton = document.getElementById('submit');
 bookGrid = document.getElementById('bookGrid');
 
+
 // Declare library list of books
 let myLibrary = [
     {
-        title: 'The Hobbit',
+        title: 'Hobbit',
         author: 'J.R.R Tolkien',
         pages: 295,
-        isRead: true
+        isRead: true,
+    },
+    {
+        title: 'Harry Potter',
+        author: 'JK Rowling',
+        pages: 425,
+        isRead: false,
     }
 ]
+
+
 
 // Create function when submit button is clicked to add Book
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     createBook()
 });
+
 
 // Create book object and add to library
 function createBook() {
@@ -60,6 +70,7 @@ function Book (title, author, pages, isRead) {
     this.author = author;
     this.pages = pages;
     this.isRead = isRead;
+    this.position = 0;
 }
 
 // Push book into library and update DOM
@@ -70,7 +81,11 @@ function addBookToLibrary (book) {
 
 // Create DOM Elements and loop through books to add to library
 function updateLibrary() {
+    resetGrid();
+
     for (book of myLibrary) {
+        let bookIndex = myLibrary.indexOf(book);
+
         let bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
 
@@ -82,9 +97,12 @@ function updateLibrary() {
         buttonContainer.classList.add('card-button-container');
 
         let isReadButton = document.createElement('button');
+        isReadButton.classList.add('isRead');
+        isReadButton.dataset.indexBook = bookIndex;
 
         let removeCardButton = document.createElement('button');
         removeCardButton.classList.add('remove-card');
+        removeCardButton.dataset.indexBook = bookIndex;
 
         titleElem.textContent = book.title;
         authorElem.textContent = book.author;
@@ -92,10 +110,9 @@ function updateLibrary() {
         
         if (book.isRead) {
             isReadButton.textContent = 'Read';
-            isReadButton.classList.add('read');
+            isReadButton.classList.toggle('read');
         } else {
             isReadButton.textContent = 'Not Read';
-            isReadButton.classList.add('unread');
         }
 
         removeCardButton.textContent = 'Remove';
@@ -108,13 +125,33 @@ function updateLibrary() {
         buttonContainer.appendChild(removeCardButton);
 
         bookCard.appendChild(buttonContainer);
+        bookGrid.appendChild(bookCard);  
 
-        bookGrid.appendChild(bookCard);
+        isReadButton.addEventListener('click', (e) => {
+            console.log(e.target);
+            let tempVar = parseInt(e.target.dataset.indexBook);
+            myLibrary[tempVar].isRead = !(myLibrary[tempVar].isRead);
+            updateLibrary();
+        })
+
+        removeCardButton.addEventListener('click', (e) => {
+            console.log(e.target);
+            let tempVar = parseInt(e.target.dataset.indexBook);
+            myLibrary.splice(tempVar, 1);
+            updateLibrary();
+        })
     }
 }
 
 
+function resetGrid() {
+    bookGrid.innerHTML = '';
+}
+
+
+
 updateLibrary();
+
 
 
 

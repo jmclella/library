@@ -103,8 +103,7 @@ html {
 }
 
 .book-card:hover {
-    background-color: var(--button-hover);
-    border: 8px solid var(--header-color);
+    border: 6px solid var(--header-color);
 }
 
 .card-button-container {
@@ -124,20 +123,20 @@ html {
     border-radius: 8px;
 }
 
-.read {
+.isRead.read {
     background-color: var(--green-color);
 }
 
-.read:hover {
+.isRead.read:hover {
     opacity: .5;
     cursor: pointer;
 }
 
-.unread {
+.isRead {
     background-color: var(--red-color);
 }
 
-.unread:hover {
+.isRead:hover {
     opacity: .5;
     cursor: pointer;
 }
@@ -188,7 +187,7 @@ html {
     row-gap: 10px;
 }
 
-input[type=text], input[type=submit] {
+input[type=text], input[type=number] {
     width: 100%;
     padding: 15px 15px;
     border: none;
